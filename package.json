@@ -1,0 +1,22 @@
+{
+  "name": "toadfish-desktop",
+  "version": "1.0.0",
+  "description": "Desktop application for toadfish.xyz",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjylewis/toadfish-desktop.git"
+  },
+  "author": "Henry Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjylewis/toadfish-desktop/issues"
+  },
+  "homepage": "https://github.com/hjylewis/toadfish-desktop#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.2"
+  }
+}
