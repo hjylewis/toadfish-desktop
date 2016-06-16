@@ -4,6 +4,8 @@ const {app} = electron;
 const {BrowserWindow} = electron;
 const {ipcMain} = electron;
 
+require('./server');
+
 let window;
 
 function createWindow() {
