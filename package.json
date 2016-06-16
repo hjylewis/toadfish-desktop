@@ -18,5 +18,8 @@
   "homepage": "https://github.com/hjylewis/toadfish-desktop#readme",
   "devDependencies": {
     "electron-prebuilt": "^1.2.2"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.6"
   }
 }
