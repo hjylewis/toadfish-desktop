@@ -1,7 +1,8 @@
 const electron = require('electron');
-const {app} = electron;
 
+const {app} = electron;
 const {BrowserWindow} = electron;
+const {ipcMain} = electron;
 
 let window;
 
@@ -25,4 +26,9 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+ipcMain.on('ping', (event) => {
+  console.log('ping');
+  event.sender.send('pong');
 });
