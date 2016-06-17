@@ -55,5 +55,33 @@ describe('songImport', function() {
         });
       });
     });
+
+    it('should return new songs', function () {
+      var songImport = new SongImport();
+      var path = "/Users/hlewis/Music/iTunes/iTunes Media/Music/Grimes/Art Angels/";
+      var path = "/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna";
+      songImport.importSongs(path, () => {
+        songImport.importSongs(path2, (_, newSongs) => {
+          var num_of_new_songs = newSongs.size;
+          var num_of_total_songs = songImport.songs.size;
+          num_of_total_songs.should.equal(15);
+          num_of_new_songs.should.equal(1);
+        });
+      });
+    });
+
+    it('should return no new songs', function () {
+      var songImport = new SongImport();
+      var path = "/Users/hlewis/Music/iTunes/iTunes Media/Music/Grimes/Art Angels/";
+      var path2 = "/Users/hlewis/Music/iTunes/iTunes Media/Music/Grimes/Art Angels/";
+      songImport.importSongs(path, () => {
+        songImport.importSongs(path2, (_, newSongs) => {
+          var num_of_new_songs = newSongs.size;
+          var num_of_total_songs = songImport.songs.size;
+          num_of_total_songs.should.equal(14);
+          num_of_new_songs.should.equal(0);
+        });
+      });
+    });
   });
 });
