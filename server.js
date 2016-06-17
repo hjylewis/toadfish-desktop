@@ -1,10 +1,20 @@
+"use strict";
+
 const http = require('http');
-const url = require('url');
+const Router = require('./lib/router');
+
+
+var router = new Router();
+router.addPath('/ping', (req, res) => {
+  res.end("pong");
+});
+
+router.addPath('/song', (req, res) => {
+  res.end("song data");
+});
 
 const server = http.createServer((req, res) => {
-  res.end("Hello, World");
-  console.log(url.parse(req.url));
-  console.log(req.method);
+  router.handle(req, res);
 });
 
 server.listen(8000);
