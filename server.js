@@ -8,3 +8,13 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000);
+
+// ## Notes
+// Site - Desktop Handshake
+// Site ask for paths and metadata
+//    Stores in db
+// Site asks for song file
+
+// Desktop tells Site there are new songs
+
+// Desktop should store paths in persistant storage and check if still there on restart.

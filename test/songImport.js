@@ -1,4 +1,5 @@
 var should = require('chai').should();
+var expect = require('chai').expect;
 var SongImport = require('../lib/songImport');
 
 // TODO make this more portable (not my file system specific)
@@ -15,6 +16,14 @@ describe('songImport', function() {
       var songImport = new SongImport();
       var path = "/Users/hlewis/Music/iTunes/iTunes Media/Music/Grimes/Art Angels/01 Laughing and Not Being Normal.m4a";
       songImport.importSongs(path,done);
+    });
+
+    it('should fail when path is incorrect', function () {
+      var songImport = new SongImport();
+      var path = "/does_not_exist";
+      songImport.importSongs(path,(err) => {
+        expect(err).to.throw;
+      });
     });
 
     it('should import 50 songs', function () {
