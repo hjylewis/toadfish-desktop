@@ -23,6 +23,7 @@
     "mocha": "^2.5.3"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.6"
+    "async": "^2.0.0-rc.6",
+    "musicmetadata": "^2.0.4"
   }
 }

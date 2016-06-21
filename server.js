@@ -3,19 +3,16 @@
 const http = require('http');
 const Router = require('./lib/router');
 
-
 var router = new Router();
 router.addPath('/ping', (req, res) => {
-  res.end("pong");
+  res.end("pong"); // With version
 });
 
 router.addPath('/song', (req, res) => {
   res.end("song data");
 });
 
-const server = http.createServer((req, res) => {
-  router.handle(req, res);
-});
+const server = http.createServer(router.handle);
 
 server.listen(8000);
 
