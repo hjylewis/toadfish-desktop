@@ -34,3 +34,6 @@ ipcMain.on('ping', (event) => {
   console.log('ping');
   event.sender.send('pong');
 });
+
+var SongImport = require('./lib/songImport');
+SongImport.getSongData("/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna/Loud/01\ S&M.m4a");
