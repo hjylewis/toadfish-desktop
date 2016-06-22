@@ -12,7 +12,7 @@ router.addPath('/song', (req, res) => {
   res.end("song data");
 });
 
-const server = http.createServer(router.handle);
+const server = http.createServer((req, res) => router.handle(req, res));
 
 server.listen(8000);
 
