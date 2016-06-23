@@ -12,6 +12,15 @@ router.addPath('/song', (req, res) => {
   res.end("song data");
 });
 
+router.addPath('/test', (req, res) => {
+  // req.on('socket', (socket) => {
+  //   console.log(socket);
+  // });
+  console.log(req.socket);
+  res.end("song data");
+
+});
+
 const server = http.createServer((req, res) => router.handle(req, res));
 
 server.listen(8000);
