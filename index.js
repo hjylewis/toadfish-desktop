@@ -10,7 +10,13 @@ let window;
 
 function createWindow() {
     win = new BrowserWindow({width: 800, height: 600});
-    win.loadURL(`file://${__dirname}/index.html`);
+    // win.loadURL(`file://${__dirname}/index.html`);
+    if (process.env.ENV === "dev") {
+      win.loadURL(`http://localhost:8000`);
+    } else {
+      win.loadURL(`http://toadfish.xyz`);
+    }
+
 
     win.on('closed', () => {
         win = null;
@@ -36,4 +42,12 @@ ipcMain.on('ping', (event) => {
 });
 
 var SongImport = require('./lib/songImport');
-SongImport.getSongData("/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna/Loud/01\ S&M.m4a");
+
+ipcMain.on('song', (event, path) => {
+  SongImport.getSongData(path, (data) => {
+    event.sender.send('song', path, data);
+  })
+});
+
+// var SongImport = require('./lib/songImport');
+// SongImport.getSongData("/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna/Loud/01\ S&M.m4a");
