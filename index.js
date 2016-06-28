@@ -44,8 +44,17 @@ ipcMain.on('ping', (event) => {
 var SongImport = require('./lib/songImport');
 
 ipcMain.on('song', (event, path) => {
-  SongImport.getSongData(path, (data) => {
-    event.sender.send('song', path, data);
+  SongImport.getSongData(path, (err, data) => {
+    if (err) {
+      event.sender.send('song', {
+        err: err
+      });
+    } else {
+      event.sender.send('song', {
+        confirmPath: path,
+        song: data
+      });
+    }
   })
 });
 
