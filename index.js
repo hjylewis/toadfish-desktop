@@ -3,7 +3,7 @@ const electron = require('electron');
 const {app} = electron;
 const {BrowserWindow} = electron;
 
-const ipc = require('./ipc');
+const ipc = require('./lib/ipc');
 
 let window;
 
