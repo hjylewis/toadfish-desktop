@@ -1,3 +1,5 @@
+"use strict";
+
 var library = (function () {
   var {ipcRenderer} = require('electron');
   var dev = process.env.ENV === "dev";
@@ -10,6 +12,24 @@ var library = (function () {
   } else {
     continueBtn.setAttribute('href','http://toadfish.xyz');
   }
+
+  // Set up drag and drop
+  var form = document.getElementById('library-form');
+  form.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+
+  form.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+
+  form.addEventListener('drop', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleFiles(e.dataTransfer.files);
+  });
 
 
   function handleFiles(files) {
