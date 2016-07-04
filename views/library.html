@@ -1,0 +1,16 @@
+<html>
+<head>
+  <link rel="stylesheet" href="./css/library.css">
+</head>
+<body>
+  <h1>Your Local Music Library</h1>
+  <form id="library-form">
+    <div>
+      <input type="file" id="file" multiple webkitdirectory hidden onchange="library.handleFiles(this.files)"/>
+      <label for="file"><strong>Choose a folder</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+    </div>
+  </form>
+  <a href="" id="continue-btn">Continue</a>
+</body>
+<script src="./scripts/library.js"></script>
+</html>
