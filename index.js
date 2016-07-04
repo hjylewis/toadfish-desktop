@@ -3,7 +3,7 @@ const electron = require('electron');
 const {app} = electron;
 const {BrowserWindow} = electron;
 
-require('./ipc');
+const ipc = require('./ipc');
 
 let window;
 
@@ -33,3 +33,8 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+var SongImport = require('./lib/songImport');
+var songImport = new SongImport();
+songImport.importSongs("/Users/hlewis/Music/iTunes/iTunes Media/Music/");
+ipc(songImport);
