@@ -38,3 +38,9 @@ var SongImport = require('./lib/songImport');
 var songImport = new SongImport();
 songImport.importSongs("/Users/hlewis/Music/iTunes/iTunes Media/Music/");
 ipc(songImport);
+
+// TODO
+// Remove local song view from web
+// Add view to desktop
+// Make song meta adding more fast
+// Add persist storage

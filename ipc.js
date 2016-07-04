@@ -1,5 +1,6 @@
 const {ipcMain} = require('electron');
 var request = require('request');
+var signature = require('cookie-signature');
 
 module.exports = function (songImport) {
   ipcMain.on('song', (event, path) => {
@@ -19,17 +20,21 @@ module.exports = function (songImport) {
 
   ipcMain.on('storeSongs', (event, data) => {
     console.log(data);
+    var cookie = 'connect.sid=s:' + signature.sign(data.sessionID, process.env.SESSION_SECRET);
     songImport.getMetadata((err, songData) => {
       if (err) {
         console.log(err);
         return;
       }
-      // TODO redo and make secure
+      // TODO redo
       songData.forEach((song) => {
         request.post({
             url:'http://localhost:8000/localsong/' + data.roomID + '/storeSongs',
             form: {
               song: JSON.stringify(song)
+            },
+            headers: {
+              'Cookie': cookie
             }
           },
           (err, httpResponse, body) => {
