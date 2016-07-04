@@ -81,6 +81,7 @@ ipcMain.on('storeSongs', (event, data) => {
           }
           console.log(httpResponse.statusCode);
           console.log(body);
+          event.sender.send('localEnabled');
         });
     });
   })
