@@ -4,7 +4,7 @@ const {app} = electron;
 const {BrowserWindow} = electron;
 const {ipcMain} = electron;
 
-require('./server');
+var request = require('request');
 
 let window;
 
@@ -42,6 +42,8 @@ ipcMain.on('ping', (event) => {
 });
 
 var SongImport = require('./lib/songImport');
+var songImport = new SongImport();
+songImport.importSongs("/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna/Loud/01\ S&M.m4a");
 
 ipcMain.on('song', (event, path) => {
   SongImport.getSongData(path, (err, data) => {
@@ -57,6 +59,32 @@ ipcMain.on('song', (event, path) => {
     }
   })
 });
+
+ipcMain.on('storeSongs', (event, data) => {
+  console.log(data);
+  songImport.getMetadata((err, songData) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    // TODO redo and make secure
+    songData.forEach((song) => {
+      request.post({
+          url:'http://localhost:8000/localsong/' + data.roomID + '/storeSongs',
+          form: {
+            song: JSON.stringify(song)
+          }
+        },
+        (err, httpResponse, body) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(httpResponse.statusCode);
+          console.log(body);
+        });
+    });
+  })
+})
 
 // var SongImport = require('./lib/songImport');
 // SongImport.getSongData("/Users/hlewis/Music/iTunes/iTunes Media/Music/Rihanna/Loud/01\ S&M.m4a");
