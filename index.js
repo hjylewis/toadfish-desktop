@@ -9,11 +9,7 @@ let window;
 
 function createWindow() {
     win = new BrowserWindow({width: 800, height: 600});
-    if (process.env.ENV === "dev") {
-      win.loadURL(`http://localhost:8000`);
-    } else {
-      win.loadURL(`http://toadfish.xyz`);
-    }
+    win.loadURL(`file://${__dirname}/views/library.html`);
 
 
     win.on('closed', () => {
@@ -36,7 +32,6 @@ app.on('activate', () => {
 
 var SongImport = require('./lib/songImport');
 var songImport = new SongImport();
-songImport.importSongs("/Users/hlewis/Music/iTunes/iTunes Media/Music/");
 ipc(songImport);
 
 // TODO
@@ -44,3 +39,4 @@ ipc(songImport);
 // Add view to desktop
 // Make song meta adding more fast
 // Add persist storage
+// Photos
