@@ -4,6 +4,11 @@ var library = (function () {
   var {ipcRenderer} = require('electron');
   var dev = process.env.ENV === "dev";
 
+  var roomID = location.search.substring(1);
+  console.log(roomID);
+  var continueBtn = document.getElementById('continue-btn');
+  continueBtn.setAttribute('href', './web-app.html?' + roomID);
+
   // Set up drag and drop
   var form = document.getElementById('library-form');
   form.addEventListener('dragover', (e) => {

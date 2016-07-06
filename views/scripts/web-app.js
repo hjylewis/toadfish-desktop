@@ -2,7 +2,7 @@
   var dev = process.env.ENV === "dev";
 
   // Set continue button destination
-  var roomID = location.search;
+  var roomID = location.search.substring(1);
   console.log(roomID);
   var webApp = document.getElementById('web-app');
   if (dev) {
@@ -13,7 +13,8 @@
 
   webApp.addEventListener('ipc-message', (event) => {
     if (event.channel === "loadLocalSongs") {
-      window.location.href = `./library.html`
+      roomID = event.args[0];
+      window.location.href = `./library.html?${roomID}`
     }
   });
 })();
