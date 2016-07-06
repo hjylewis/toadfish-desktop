@@ -31,6 +31,11 @@ var library = (function () {
     handleFiles(e.dataTransfer.files);
   });
 
+  var countEl = document.getElementById('count');
+  ipcRenderer.on('libraryCount', (e, count) => {
+    countEl.innerHTML = '';  //reset
+    countEl.appendChild(document.createTextNode(count.toString()));
+  });
 
   function handleFiles(files) {
     var path = files[0].path;

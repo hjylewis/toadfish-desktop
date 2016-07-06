@@ -1,4 +1,13 @@
 #library-form {
-  border: black solid;
+  background-color: #c8dadf;
   height: 300px;
+  padding: 20px;
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+}
+
+#library-form label {
+  cursor: pointer;
 }
