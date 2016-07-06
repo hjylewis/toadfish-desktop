@@ -40,3 +40,4 @@ ipc(songImport);
 // Make song meta adding more fast
 // Add persist storage
 // Photos
+// music stops when loading more songs

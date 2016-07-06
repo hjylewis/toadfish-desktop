@@ -30,7 +30,7 @@ var library = (function () {
   var countEl = document.getElementById('count');
   ipcRenderer.on('libraryCount', (e, count) => {
     countEl.innerHTML = '';  //reset
-    countEl.appendChild(document.createTextNode(count.toString()));
+    countEl.appendChild(document.createTextNode(count));
   });
 
   function handleFiles(files) {
@@ -39,6 +39,7 @@ var library = (function () {
     ipcRenderer.send('addPath', path);
   }
 
+  ipcRenderer.send('requestLibraryCount');
   return {
     handleFiles: handleFiles
   }
