@@ -10,4 +10,10 @@
   } else {
     webApp.setAttribute('src','http://toadfish.xyz' + roomID);
   }
+
+  webApp.addEventListener('ipc-message', (event) => {
+    if (event.channel === "loadLocalSongs") {
+      window.location.href = `./library.html`
+    }
+  });
 })();
