@@ -4,15 +4,6 @@ var library = (function () {
   var {ipcRenderer} = require('electron');
   var dev = process.env.ENV === "dev";
 
-
-  // Set continue button destination
-  var continueBtn = document.getElementById('continue-btn');
-  if (dev) {
-    continueBtn.setAttribute('href','http://localhost:8000');
-  } else {
-    continueBtn.setAttribute('href','http://toadfish.xyz');
-  }
-
   // Set up drag and drop
   var form = document.getElementById('library-form');
   form.addEventListener('dragover', (e) => {
