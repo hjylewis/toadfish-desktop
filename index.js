@@ -35,9 +35,12 @@ var songImport = new SongImport();
 ipc(songImport);
 
 // TODO
-// Remove local song view from web
 // Add view to desktop
-// Make song meta adding more fast
 // Add persist storage
-// Photos
+// Clean up photos
 // music stops when loading more songs
+// Remove depreciated code in site
+// improve git frame dependency
+
+// Enhancement (no time)
+// improve add and remove localsongs interface

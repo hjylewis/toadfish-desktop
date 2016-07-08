@@ -17,4 +17,8 @@
       window.location.href = `./library.html?${roomID}`
     }
   });
+
+  webApp.addEventListener('dom-ready', () => {
+    webApp.openDevTools();
+  });
 })();

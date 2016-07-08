@@ -27,6 +27,7 @@
     "cookie-signature": "^1.0.6",
     "musicmetadata": "^2.0.4",
     "request": "^2.72.0",
+    "toadfish-frame": "git+https://github.com/hjylewis/toadfish-frame.git",
     "underscore": "^1.8.3"
   }
 }
