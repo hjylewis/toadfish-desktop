@@ -36,11 +36,12 @@ ipc(songImport);
 
 // TODO
 // Add view to desktop
-// Add persist storage
 // Clean up photos
 // music stops when loading more songs
 // Remove depreciated code in site
 // improve git frame dependency
+// BUG drag and drop
+// BUG removes localsongs on exit
 
 // Enhancement (no time)
 // improve add and remove localsongs interface

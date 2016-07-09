@@ -33,13 +33,19 @@ var library = (function () {
     countEl.appendChild(document.createTextNode(count));
   });
 
+  var clear = document.getElementById('clear-btn');
+  clear.addEventListener('click', (e) => {
+    ipcRenderer.send('clearLibrary');
+    e.preventDefault();
+  });
+
   function handleFiles(files) {
     var path = files[0].path;
     console.log(path);
     ipcRenderer.send('addPath', path);
   }
 
-  ipcRenderer.send('requestLibraryCount');
+  ipcRenderer.send('importFromFile');
   return {
     handleFiles: handleFiles
   }
